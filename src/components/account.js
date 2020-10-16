@@ -7,6 +7,8 @@ import {
   ListItem,
   ListIcon,
 } from "@chakra-ui/core";
+import SigninContainer from "../containers/SigninContainer";
+import LoginContainer from "../containers/LoginContainer";
 import { BiWorld } from "react-icons/bi";
 import { TiMessages } from "react-icons/ti";
 import { BsFillPeopleFill } from "react-icons/bs";
@@ -45,10 +47,8 @@ class Account extends React.Component {
         <Flex width="80vw" direction="column" justify="center" align="center">
           <Heading as="h3">Connect Now !</Heading>
           <Flex direction="column" width="15vw">
-            <Button variantColor="green" marginBottom="2%" variant="outline">
-              Sign In
-            </Button>
-            <Button variantColor="green">Log In</Button>
+            <SigninContainer />
+            <LoginContainer />
           </Flex>
         </Flex>
       </Flex>
