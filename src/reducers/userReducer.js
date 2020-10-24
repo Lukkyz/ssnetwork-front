@@ -1,7 +1,9 @@
 import { REFRESH, SIGNIN, LOGIN } from "../actions/userType";
 
+const isLogged = localStorage.getItem("isLogged") && localStorage.getItem("isLogged") === "true" ? true : false
+
 const initial = {
-  logged: false,
+  logged: isLogged,
 };
 
 const user = (state = initial, action) => {

@@ -19,7 +19,7 @@ function SignIn(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (values) => props.create(values);
-  const password = useRef({});
+  const password = useRef({})
   password.current = watch("password", "");
   return (
     <>

@@ -10,25 +10,31 @@ export const login = (user) => (dispatch) => {
           type: LOGIN,
           payload: user.data,
         });
+        localStorage.setItem("isLogged", true);
         resolve(user);
       })
       .catch((err) => {
-        console.log(err);
         reject();
       });
   });
 };
 
 export const refresh = () => (dispatch) => {
-  axios
-    .post("http://localhost:3000/users/refresh_token")
-    .then((user) => {
-      dispatch({
-        type: REFRESH,
-        payload: user.data,
+  return new Promise(function (resolve, reject) {
+    axios
+      .post("http://localhost:3000/users/refresh_token")
+      .then((user) => {
+        dispatch({
+          type: REFRESH,
+          payload: user.data,
+        });
+        localStorage.setItem("isLogged", true);
+        resolve();
+      })
+      .catch((err) => {
+        reject();
       });
-    })
-    .catch((err) => console.log(err));
+  });
 };
 
 export const createUser = (user) => (dispatch) => {

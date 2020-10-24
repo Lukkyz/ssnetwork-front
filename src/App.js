@@ -6,11 +6,12 @@ import Account from "./components/account";
 import Posts from "./components/Posts";
 import { CSSReset, theme, ThemeProvider } from "@chakra-ui/core";
 import { refresh } from "./actions/userActions";
+import  PrivateRoute  from "./middleware/PrivateRoute"
 import "./App.css";
 
 class App extends React.Component {
   componentWillMount() {
-    store.dispatch(refresh());
+    store.dispatch(refresh()).then().catch()
   }
   render() {
     return (
@@ -19,7 +20,7 @@ class App extends React.Component {
         <Provider store={store}>
           <Router>
             <Route path="/login" component={Account} exact />
-            <Route path="/" component={Posts} />
+            <PrivateRoute path="/" component={Posts} />
           </Router>
         </Provider>
       </ThemeProvider>
